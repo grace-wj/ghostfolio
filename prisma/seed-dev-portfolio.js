@@ -93,11 +93,13 @@ const ORDERS = [
 ];
 
 const HISTORY_START = Date.UTC(2022, 0, 1);
+// Hardcoded end of the fixture window so the seeded portfolio is fully
+// reproducible regardless of when the seed runs (do NOT use new Date()).
+const HISTORY_END = Date.UTC(2024, 11, 2);
 
 function buildMarketData() {
   const rows = [];
-  const now = new Date();
-  const end = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  const end = HISTORY_END;
   const span = end - HISTORY_START;
 
   for (const { symbol, startPrice, endPrice } of SYMBOLS) {
@@ -114,7 +116,7 @@ function buildMarketData() {
         year += 1;
       }
     }
-    // Ensure there is a data point for "today" for the current quote.
+    // Ensure there is a data point at the fixed end date for the current quote.
     if (dates[dates.length - 1] !== end) {
       dates.push(end);
     }
