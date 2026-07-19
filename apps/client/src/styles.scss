@@ -10,7 +10,15 @@
 $mat-css-dark-theme-selector: '.is-dark-theme';
 $mat-css-light-theme-selector: '.is-light-theme';
 
-@include init-material-css-vars() {
+// Angular Material v15 introduced the MDC-based components. To preserve the
+// existing (v14) visual behavior of this custom design system we take the
+// legacy compatibility path: the app imports `@angular/material/legacy-*`
+// modules, so the theme must emit the matching legacy component styles and
+// defer full MDC adoption.
+@include init-material-css-vars(
+  $load-mdc-components: false,
+  $load-legacy-components: true
+) {
   // If your app has any theme mixins, call them here.
   // $mat-css-theme gets set to an appropriate value before this content is called.
   // @include your-custom-component-theme($mat-css-theme);
