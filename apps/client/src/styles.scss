@@ -10,7 +10,13 @@
 $mat-css-dark-theme-selector: '.is-dark-theme';
 $mat-css-light-theme-selector: '.is-light-theme';
 
-@include init-material-css-vars() {
+// Angular 15 Material MDC migration: stay on the legacy (pre-MDC) components
+// so the existing custom theme and CSS overrides render unchanged. Load the
+// legacy component themes only and defer full MDC adoption.
+@include init-material-css-vars(
+  $load-mdc-components: false,
+  $load-legacy-components: true
+) {
   // If your app has any theme mixins, call them here.
   // $mat-css-theme gets set to an appropriate value before this content is called.
   // @include your-custom-component-theme($mat-css-theme);
