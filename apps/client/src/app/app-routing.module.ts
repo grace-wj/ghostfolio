@@ -220,12 +220,11 @@ const routes: Routes = [
     RouterModule.forRoot(
       routes,
       // Preload all lazy loaded modules with the attribute preload === true
-      {
-        anchorScrolling: 'enabled',
-        preloadingStrategy: ModulePreloadService,
-        // enableTracing: true // <-- debugging purposes only
-        relativeLinkResolution: 'legacy'
-      }
+      // Preload all lazy loaded modules with the attribute preload === true
+{
+    anchorScrolling: 'enabled',
+    preloadingStrategy: ModulePreloadService
+}
     )
   ],
   providers: [
