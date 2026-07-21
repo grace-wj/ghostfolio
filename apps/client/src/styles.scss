@@ -10,7 +10,10 @@
 $mat-css-dark-theme-selector: '.is-dark-theme';
 $mat-css-light-theme-selector: '.is-light-theme';
 
-@include init-material-css-vars() {
+@include init-material-css-vars(
+  $load-mdc-components: false,
+  $load-legacy-components: true
+) {
   // If your app has any theme mixins, call them here.
   // $mat-css-theme gets set to an appropriate value before this content is called.
   // @include your-custom-component-theme($mat-css-theme);
